@@ -39,5 +39,16 @@
 
             return View(cars);
         }
+
+        public async Task<ActionResult> Drivers()
+        {
+            var imagePath = Server.MapPath(@"~/assets/pages/media/profile/Profile.png");
+
+            var emotionClient = new EmotionClient();
+
+            var emotion = await emotionClient.GetEmotions(imagePath);
+
+            return View(emotion);
+        }
     }
 }

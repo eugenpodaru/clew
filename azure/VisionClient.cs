@@ -10,6 +10,7 @@
     public class VisionClient
     {
         private static readonly Regex licensePlateRegex = new Regex(@"(\w{3}\d{3})|(\w{2}-\w{2}-\w{2})|(\d{2}-\w{3}-\d{1})|(\d{1}-\w{3}-\d{2})|(\w{1}-\d{3}-\w{2})|(\w{2}-\d{3}-\w)");
+
         private readonly VisionServiceClient client;
 
         public VisionClient()
