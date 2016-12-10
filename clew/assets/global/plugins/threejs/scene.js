@@ -1,4 +1,7 @@
 ﻿$(function () {
+    var yaw = 0;
+    var pitch = 0;
+    var radius = 10;
     var container = document.getElementById("scene_container");
 
     var camera, scene, renderer;
@@ -16,8 +19,6 @@
     function init() {
 
         camera = new THREE.PerspectiveCamera(45, containerWidth / containerHeight, 1, 2000);
-        camera.position.z = 10;
-        camera.position.y = 2;
 
         // scene
 
@@ -65,7 +66,9 @@
             });
 
             object.rotateY(-Math.PI/2);
-            object.translateX(4);
+            object.translateX(3.5);
+            object.translateZ(0.5);
+            object.translateY(0.5);
             scene.add(object);
 
         }, onProgress, onError);
@@ -78,7 +81,7 @@
 
         container.appendChild(renderer.domElement);
 
-        document.addEventListener('mousemove', onDocumentMouseMove, false);
+        document.addEventListener('keydown', onKeyDown, false);
 
         window.addEventListener('resize', onWindowResize, false);
     }
@@ -98,6 +101,67 @@
         mouseY = (event.clientY - containerHeight / 2) / 2;
     }
 
+    function getArrowKeyDirection (keyCode) {
+        return {
+            37: 'left',
+            39: 'right',
+            38: 'up',
+            40: 'down'
+        }[keyCode];
+    }
+
+    function isArrowKey (keyCode) {
+        return !!getArrowKeyDirection(keyCode);
+    }
+
+    var decrement = 40;
+    function up() {
+        pitch += Math.PI/decrement;
+        if (pitch > Math.PI/2)
+            pitch = Math.PI/2;
+    }
+    function down() {
+        pitch -= Math.PI/decrement;
+        if (pitch < -Math.PI/2)
+            pitch = -Math.PI/2;
+    }
+    function left() {
+        yaw -= Math.PI/decrement;
+    }
+    function right() {
+        yaw += Math.PI/decrement;
+    }
+
+    function onKeyDown(event) {
+        var direction, keyCode = event.keyCode;
+
+        if (isArrowKey(keyCode)) {
+            direction = getArrowKeyDirection(keyCode);
+            if (direction == 'up')
+                up();
+            else if (direction == 'down')
+                down();
+            else if (direction == 'left')
+                left();
+            else if (direction == 'right')
+                right();
+            else if (direction == 'right')
+                right();
+        }
+        else
+        {
+            var radiusDec = 1;
+            var c = String.fromCharCode(keyCode);
+            console.log(c);
+            if (c == 'W')
+                radius -= radiusDec;
+            else if (c == 'S')
+                radius += radiusDec;
+            if (radius < 1)
+                radius = 1;
+        }
+    }
+
     //
     function animate() {
         requestAnimationFrame(animate);
@@ -105,8 +169,9 @@
     }
 
     function render() {
-        //camera.position.x += (mouseX - camera.position.x) * .05;
-        //camera.position.y += (-mouseY - camera.position.y) * .05;
+        camera.position.x = radius * Math.cos(pitch) * Math.sin (yaw);
+        camera.position.y = radius * Math.sin(pitch);
+        camera.position.z = radius * Math.cos(pitch) * Math.cos(yaw);
 
         camera.lookAt(scene.position);
 
