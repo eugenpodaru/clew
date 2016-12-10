@@ -19,5 +19,10 @@
         {
             return View();
         }
+
+        public ActionResult Cars()
+        {
+            return View();
+        }
     }
 }

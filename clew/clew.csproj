@@ -4441,8 +4441,7 @@
     <Content Include="assets\global\plugins\socicon\svg\socicon_zynga.svg" />
     <Content Include="assets\global\plugins\tabdrop\css\tabdrop.css" />
     <Content Include="assets\global\plugins\tabdrop\js\bootstrap-tabdrop.js" />
-    <Content Include="assets\global\plugins\threejs\20161210143259.jpg" />
-    <Content Include="assets\global\plugins\threejs\20161210143259.png" />
+    <Content Include="assets\global\plugins\threejs\masina_new.jpg" />
     <Content Include="assets\global\plugins\threejs\OBJLoader.js" />
     <Content Include="assets\global\plugins\threejs\scene.js" />
     <Content Include="assets\global\plugins\threejs\three.js" />
@@ -5632,7 +5631,7 @@
     <Content Include="assets\pages\media\blog\Thumbs.db" />
     <Content Include="assets\pages\media\pages\Thumbs.db" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="assets\global\plugins\threejs\20161210143259.mtl" />
+    <Content Include="assets\global\plugins\threejs\masina_new.mtl" />
     <None Include="Properties\PublishProfiles\clew - Web Deploy.pubxml" />
     <Content Include="Views\Home\Case.cshtml" />
     <Content Include="Views\Home\Gallery.cshtml" />
