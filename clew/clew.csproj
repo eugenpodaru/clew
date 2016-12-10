@@ -4844,7 +4844,7 @@
     <Content Include="assets\layouts\layout6\css\custom.min.css" />
     <Content Include="assets\layouts\layout6\css\layout.css" />
     <Content Include="assets\layouts\layout6\css\layout.min.css" />
-    <Content Include="assets\layouts\layout6\img\avatar1.jpg" />
+    <Content Include="assets\layouts\layout6\img\avatar.jpg" />
     <Content Include="assets\layouts\layout6\img\bg_01.jpg" />
     <Content Include="assets\layouts\layout6\img\close.png" />
     <Content Include="assets\layouts\layout6\img\logo.png" />
@@ -5813,6 +5813,7 @@
     <Content Include="assets\pages\media\blog\Thumbs.db" />
     <Content Include="assets\pages\media\pages\Thumbs.db" />
     <Content Include="Views\Home\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\clew - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
