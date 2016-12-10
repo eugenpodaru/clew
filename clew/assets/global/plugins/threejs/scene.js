@@ -67,6 +67,7 @@
                 }
             });
 
+            object.rotateX(-Math.PI/2);
             object.scale.set(30, 30, 30);
             scene.add(object);
 
