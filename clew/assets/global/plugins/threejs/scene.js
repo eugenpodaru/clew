@@ -66,6 +66,8 @@
 
             object.rotateY(-Math.PI/2);
             object.translateX(4);
+            object.translateZ(2);
+            object.translateY(0.5);
             scene.add(object);
 
         }, onProgress, onError);
