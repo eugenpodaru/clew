@@ -51,7 +51,7 @@
 
 
         var imgLoader = new THREE.ImageLoader(manager);
-        imgLoader.load(App.getGlobalPluginsPath() + "threejs/20161210143259.png", function (image) {
+        imgLoader.load(App.getGlobalPluginsPath() + "threejs/masina_new.png", function (image) {
             texture.image = image;
             texture.needsUpdate = true;
         });
