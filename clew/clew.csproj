@@ -5656,6 +5656,8 @@
     <Content Include="assets\pages\media\blog\Thumbs.db" />
     <Content Include="assets\pages\media\pages\Thumbs.db" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="assets\pages\media\profile\Profile.ogv" />
+    <Content Include="assets\pages\media\profile\Profile.webm" />
     <None Include="Properties\PublishProfiles\clew - Web Deploy.pubxml" />
     <Content Include="Views\Home\Case.cshtml" />
     <Content Include="Views\Home\Gallery.cshtml" />
