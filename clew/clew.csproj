@@ -5635,6 +5635,7 @@
     <None Include="Properties\PublishProfiles\clew - Web Deploy.pubxml" />
     <Content Include="Views\Home\Case.cshtml" />
     <Content Include="Views\Home\Gallery.cshtml" />
+    <Content Include="Views\Home\Cars.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5647,6 +5648,16 @@
     <Folder Include="assets\apps\img\" />
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\azure\azure.csproj">
+      <Project>{a982f285-5899-4bae-8b55-7d396b34b24c}</Project>
+      <Name>azure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\rdw\rdw.csproj">
+      <Project>{3c086bda-4f37-4acf-9fb9-f65801b2b6fd}</Project>
+      <Name>rdw</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

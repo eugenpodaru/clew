@@ -48,13 +48,6 @@
         var onError = function (xhr) {
         };
 
-
-        var imgLoader = new THREE.ImageLoader(manager);
-        imgLoader.load(App.getGlobalPluginsPath() + "threejs/20161210143259.png", function (image) {
-            texture.image = image;
-            texture.needsUpdate = true;
-        });
-
         // model
         var objLoader = new THREE.OBJLoader(manager);
         objLoader.load(App.getGlobalPluginsPath() + "threejs/masina_new.jpg", function (object) {

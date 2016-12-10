@@ -425,21 +425,21 @@ var Dashboard = function() {
 
             $('.easy-pie-chart .number.transactions').easyPieChart({
                 animate: 1000,
-                size: 75,
+                size: 90,
                 lineWidth: 3,
                 barColor: App.getBrandColor('yellow')
             });
 
             $('.easy-pie-chart .number.visits').easyPieChart({
                 animate: 1000,
-                size: 75,
+                size: 90,
                 lineWidth: 3,
                 barColor: App.getBrandColor('green')
             });
 
             $('.easy-pie-chart .number.bounce').easyPieChart({
                 animate: 1000,
-                size: 75,
+                size: 90,
                 lineWidth: 3,
                 barColor: App.getBrandColor('red')
             });
