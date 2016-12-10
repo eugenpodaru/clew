@@ -16,7 +16,8 @@
     function init() {
 
         camera = new THREE.PerspectiveCamera(45, containerWidth / containerHeight, 1, 2000);
-        camera.position.z = 250;
+        camera.position.z = 10;
+        camera.position.y = 2;
 
         // scene
 
@@ -55,7 +56,7 @@
 
         // model
         var objLoader = new THREE.OBJLoader(manager);
-        objLoader.load(App.getGlobalPluginsPath() + "threejs/20161210143259.jpg", function (object) {
+        objLoader.load(App.getGlobalPluginsPath() + "threejs/masina_new.jpg", function (object) {
 
             object.traverse(function (child) {
                 if (child instanceof THREE.Mesh) {
@@ -63,8 +64,8 @@
                 }
             });
 
-            object.rotateX(-Math.PI/2);
-            object.scale.set(30, 30, 30);
+            object.rotateY(-Math.PI/2);
+            object.translateX(4);
             scene.add(object);
 
         }, onProgress, onError);
@@ -104,8 +105,8 @@
     }
 
     function render() {
-        camera.position.x += (mouseX - camera.position.x) * .05;
-        camera.position.y += (-mouseY - camera.position.y) * .05;
+        //camera.position.x += (mouseX - camera.position.x) * .05;
+        //camera.position.y += (-mouseY - camera.position.y) * .05;
 
         camera.lookAt(scene.position);
 
