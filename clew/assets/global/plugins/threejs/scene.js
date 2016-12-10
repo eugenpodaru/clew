@@ -2,6 +2,7 @@
     var yaw = 0;
     var pitch = 0;
     var radius = 10;
+    var car;
     var container = document.getElementById("scene_container");
 
     var camera, scene, renderer;
@@ -71,6 +72,9 @@
             object.translateY(0.5);
             scene.add(object);
 
+            car = object;
+            console.log("loaded " + vecToStr(car.position));
+
         }, onProgress, onError);
 
         //
@@ -82,8 +86,41 @@
         container.appendChild(renderer.domElement);
 
         document.addEventListener('keydown', onKeyDown, false);
+        document.addEventListener('mousedown', onMouseDown, false);
 
         window.addEventListener('resize', onWindowResize, false);
+    }
+
+    function vecToStr(r) {
+        return "(" + r.x + ", " + r.y + ", " + r.z + ")";
+    }
+
+    function onMouseDown(e) {
+        var vectorMouse = new THREE.Vector3( //vector from camera to mouse
+            -(containerWidth/2-e.clientX)*2/containerWidth,
+            (containerHeight/2-e.clientY)*2/containerHeight,
+            -1/Math.tan(22.5*Math.PI/180)); //22.5 is half of camera frustum angle 45 degree
+        vectorMouse.applyQuaternion(camera.quaternion);
+        vectorMouse.normalize();
+        console.log("Mouse: " + vecToStr(vectorMouse));
+
+        var vectorObject = new THREE.Vector3(); //vector from camera to object
+        console.log("car: " + vecToStr(car.position));
+        vectorObject.set(car.position.x - camera.position.x,
+                        car.position.y - camera.position.y,
+                        car.position.z - camera.position.z);
+        vectorObject.normalize();
+        console.log("vectorObject: " + vecToStr(vectorObject));
+        var a = vectorMouse.angleTo(vectorObject);
+        var angle = vectorMouse.angleTo(vectorObject)*180/Math.PI;
+        if (angle < 1) {
+            //mouse's position is near object's position
+            console.log("found");
+        }
+        else
+        {
+            console.log("not found: " + angle);
+        }
     }
 
     function onWindowResize() {
