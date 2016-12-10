@@ -33,8 +33,8 @@
     <link href="~/assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
     <!-- END THEME GLOBAL STYLES -->
     <!-- BEGIN THEME LAYOUT STYLES -->
-    <link href="~/assets/layouts/layout6/css/layout.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/assets/layouts/layout6/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/layouts/layout6/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/layouts/layout6/css/custom.css" rel="stylesheet" type="text/css" />
     <!-- END THEME LAYOUT STYLES -->
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
@@ -303,166 +303,99 @@
             </div>
             <div class="page-fixed-main-content">
                 <!-- BEGIN PAGE BASE CONTENT -->
-                <!-- BEGIN DASHBOARD STATS 1-->
                 <div class="row">
-                    <div class="col-md-6 col-sm-6">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="dashboard-stat blue">
-                                    <div class="visual">
-                                        <i class="fa fa-area-chart"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <span data-counter="counterup" data-value="135">0</span>
-                                        </div>
-                                        <div class="desc"> Unsolved cases </div>
-                                    </div>
-                                    <a class="more" href="javascript:;">
-                                        View more
-                                        <i class="m-icon-swapright m-icon-white"></i>
-                                    </a>
-                                </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="dashboard-stat red">
+                            <div class="visual">
+                                <i class="fa fa-bar-chart-o"></i>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="dashboard-stat red">
-                                    <div class="visual">
-                                        <i class="fa fa-bar-chart-o"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <span data-counter="counterup" data-value="23">0</span>
-                                        </div>
-                                        <div class="desc"> Unsolved urgent cases </div>
-                                    </div>
-                                    <a class="more" href="javascript:;">
-                                        View more
-                                        <i class="m-icon-swapright m-icon-white"></i>
-                                    </a>
+                            <div class="details">
+                                <div class="number">
+                                    <span data-counter="counterup" data-value="23">0</span>
                                 </div>
+                                <div class="desc"> Unsolved urgent cases </div>
                             </div>
+                            <a class="more" href="javascript:;">
+                                View more
+                                <i class="m-icon-swapright m-icon-white"></i>
+                            </a>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="dashboard-stat green">
-                                    <div class="visual">
-                                        <i class="fa fa-shopping-cart"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <span data-counter="counterup" data-value="174">0</span>
-                                        </div>
-                                        <div class="desc"> Insurance requests </div>
-                                    </div>
-                                    <a class="more" href="javascript:;">
-                                        View more
-                                        <i class="m-icon-swapright m-icon-white"></i>
-                                    </a>
-                                </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="dashboard-stat blue">
+                            <div class="visual">
+                                <i class="fa fa-area-chart"></i>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="dashboard-stat purple">
-                                    <div class="visual">
-                                        <i class="fa fa-globe"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            +
-                                            <span data-counter="counterup" data-value="89"></span>%
-                                        </div>
-                                        <div class="desc"> New Cases </div>
-                                    </div>
-                                    <a class="more" href="javascript:;">
-                                        View more
-                                        <i class="m-icon-swapright m-icon-white"></i>
-                                    </a>
+                            <div class="details">
+                                <div class="number">
+                                    <span data-counter="counterup" data-value="135">0</span>
                                 </div>
+                                <div class="desc"> Unsolved cases </div>
                             </div>
+                            <a class="more" href="javascript:;">
+                                View more
+                                <i class="m-icon-swapright m-icon-white"></i>
+                            </a>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="dashboard-stat2 bordered">
-                                    <div class="display">
-                                        <div class="number">
-                                            <h3 class="font-green-sharp">
-                                                <span data-counter="counterup" data-value="321">321</span>
-                                            </h3>
-                                            <small>SOLVED CASES CURRENT MONTH</small>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="icon-pie-chart"></i>
-                                        </div>
-                                    </div>
-                                    <div class="progress-info">
-                                        <div class="progress">
-                                            <span style="width: 76%;" class="progress-bar progress-bar-success green-sharp">
-                                                <span class="sr-only">76% progress</span>
-                                            </span>
-                                        </div>
-                                        <div class="status">
-                                            <div class="status-title"> progress </div>
-                                            <div class="status-number"> 76% </div>
-                                        </div>
-                                    </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="dashboard-stat2 bordered">
+                            <div class="display">
+                                <div class="number">
+                                    <h3 class="font-green-sharp">
+                                        <span data-counter="counterup" data-value="321">321</span>
+                                    </h3>
+                                    <small>SOLVED CASES CURRENT MONTH</small>
+                                </div>
+                                <div class="icon">
+                                    <i class="icon-pie-chart"></i>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="dashboard-stat2 bordered">
-                                    <div class="display">
-                                        <div class="number">
-                                            <h3 class="font-blue-sharp">
-                                                <span data-counter="counterup" data-value="26">26</span>
-                                            </h3>
-                                            <small>NEW CASES TODAY</small>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="icon-basket"></i>
-                                        </div>
-                                    </div>
-                                    <div class="progress-info">
-                                        <div class="progress">
-                                            <span style="width: 45%;" class="progress-bar progress-bar-success blue-sharp">
-                                                <span class="sr-only">45% grow</span>
-                                            </span>
-                                        </div>
-                                        <div class="status">
-                                            <div class="status-title"> grow </div>
-                                            <div class="status-number"> 45% </div>
-                                        </div>
-                                    </div>
+                            <div class="progress-info">
+                                <div class="progress">
+                                    <span style="width: 76%;" class="progress-bar progress-bar-success green-sharp">
+                                        <span class="sr-only">76% progress</span>
+                                    </span>
+                                </div>
+                                <div class="status">
+                                    <div class="status-title"> progress </div>
+                                    <div class="status-number"> 76% </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6">
-                        <!-- BEGIN CHART PORTLET-->
-                        <div class="portlet light bordered">
-                            <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="icon-bar-chart font-green-haze"></i>
-                                    <span class="caption-subject bold uppercase font-green-haze"> Cases </span>
-                                    <span class="caption-helper">by province</span>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="dashboard-stat2 bordered">
+                            <div class="display">
+                                <div class="number">
+                                    <h3 class="font-blue-sharp">
+                                        <span data-counter="counterup" data-value="26">26</span>
+                                    </h3>
+                                    <small>NEW CASES TODAY</small>
                                 </div>
-                                <div class="tools">
-                                    <a href="javascript:;" class="collapse"> </a>
-                                    <a href="#portlet-config" data-toggle="modal" class="config"> </a>
-                                    <a href="javascript:;" class="reload"> </a>
-                                    <a href="javascript:;" class="fullscreen"> </a>
-                                    <a href="javascript:;" class="remove"> </a>
+                                <div class="icon">
+                                    <i class="icon-basket"></i>
                                 </div>
                             </div>
-                            <div class="portlet-body">
-                                <div id="chart_netherlands" class="chart" style="height: 330px;"> </div>
+                            <div class="progress-info">
+                                <div class="progress">
+                                    <span style="width: 45%;" class="progress-bar progress-bar-success blue-sharp">
+                                        <span class="sr-only">45% grow</span>
+                                    </span>
+                                </div>
+                                <div class="status">
+                                    <div class="status-title"> grow </div>
+                                    <div class="status-number"> 45% </div>
+                                </div>
                             </div>
                         </div>
-                        <!-- END CHART PORTLET-->
                     </div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="row">
-                    <div class="col-md-12 col-sm-12">
+                    <div class="col-md-9 col-sm-12">
                         <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                        <div class="portlet box red">
+                        <div class="portlet box blue">
                             <div class="portlet-title">
                                 <div class="caption">
                                     <i class="fa fa-globe"></i>Cases
@@ -477,7 +410,7 @@
                                 </div>
                             </div>
                             <div class="portlet-body">
-                                <table class="table table-striped table-bordered table-hover table-header-fixed" id="sample_2">
+                                <table class="table table-striped table-bordered table-hover table-header-fixed" id="sample_2" style="min-height:512px;">
                                     <thead>
                                         <tr>
                                             <th> Name </th>
@@ -602,6 +535,33 @@
                             </div>
                         </div>
                         <!-- END EXAMPLE TABLE PORTLET-->
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <!-- BEGIN CHART PORTLET-->
+                                <div class="portlet light bordered">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="icon-bar-chart font-green-haze"></i>
+                                            <span class="caption-subject bold uppercase font-green-haze"> Cases </span>
+                                            <span class="caption-helper">by province</span>
+                                        </div>
+                                        <div class="tools">
+                                            <a href="javascript:;" class="collapse"> </a>
+                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                            <a href="javascript:;" class="reload"> </a>
+                                            <a href="javascript:;" class="fullscreen"> </a>
+                                            <a href="javascript:;" class="remove"> </a>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <div id="chart_netherlands" class="chart" style="height: 330px;"> </div>
+                                    </div>
+                                </div>
+                                <!-- END CHART PORTLET-->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
