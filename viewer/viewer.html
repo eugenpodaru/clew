@@ -1,52 +1,181 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset=utf-8>
-		<title>My first Three.js app</title>
+<!-- saved from url=(0050)https://threejs.org/examples/webgl_loader_obj.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>three.js webgl - loaders - OBJ loader</title>
+		
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
-			body { margin: 0; }
-			canvas { width: 100%; height: 100% }
-            #canvas {
-                background-color: #000;
-                width: 800px;
-                height: 800px;
-                border: 1px solid black;
-                margin: 10px;
-                padding: 0px;
-                position: static; /* fixed or static */
-                top: 100px;
-                left: 100px;
-            }
+			body {
+				font-family: Monospace;
+				background-color: #000;
+				color: #fff;
+				margin: 0px;
+				overflow: hidden;
+			}
+			#info {
+				color: #fff;
+				position: absolute;
+				top: 10px;
+				width: 100%;
+				text-align: center;
+				z-index: 100;
+				display:block;
+			}
+			#info a, .button { color: #f00; font-weight: bold; text-decoration: underline; cursor: pointer }
 		</style>
 	</head>
+
 	<body>
-        <div id="canvas"></div>
+		<div id="info">
+		<a href="http://threejs.org/" target="_blank">three.js</a> - OBJLoader test
+		</div>
+
 		<script src="js/three.js"></script>
+		<script src="js/OBJLoader.js"></script>
+
 		<script>
-            container = document.getElementById( 'canvas' );
-            document.body.appendChild( container );
 
-            var scene = new THREE.Scene();
-			var camera = new THREE.PerspectiveCamera( 75, 800/800, 0.1, 1000 );
+			var container;
 
-			var renderer = new THREE.WebGLRenderer();
-            renderer.setSize( 800, 800 );
-            container.appendChild( renderer.domElement );
+			var camera, scene, renderer;
 
-            var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-			var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-			var cube = new THREE.Mesh( geometry, material );
-			scene.add( cube );
+			var mouseX = 0, mouseY = 0;
 
-			camera.position.z = 5;
+			var windowHalfX = window.innerWidth / 2;
+			var windowHalfY = window.innerHeight / 2;
 
-			var render = function () {
-				requestAnimationFrame( render );
 
-				renderer.render(scene, camera);
-			};
+			init();
+			animate();
 
-			render();
-		</script>
-	</body>
-</html>
+
+			function init() {
+
+				container = document.createElement( 'div' );
+				document.body.appendChild( container );
+
+				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+				camera.position.z = 250;
+
+				// scene
+
+				scene = new THREE.Scene();
+
+				var ambient = new THREE.AmbientLight( 0x101030 );
+				scene.add( ambient );
+
+				var directionalLight = new THREE.DirectionalLight( 0xffeedd );
+				directionalLight.position.set( 0, 0, 1 );
+				scene.add( directionalLight );
+
+				// texture
+
+				var manager = new THREE.LoadingManager();
+				manager.onProgress = function ( item, loaded, total ) {
+
+					console.log( item, loaded, total );
+
+				};
+
+				var texture = new THREE.Texture();
+
+				var onProgress = function ( xhr ) {
+					if ( xhr.lengthComputable ) {
+						var percentComplete = xhr.loaded / xhr.total * 100;
+						console.log( Math.round(percentComplete, 2) + '% downloaded' );
+					}
+				};
+
+				var onError = function ( xhr ) {
+				};
+
+
+				var loader = new THREE.ImageLoader( manager );
+				loader.load( '20161209232449.png', function ( image ) {
+
+					texture.image = image;
+					texture.needsUpdate = true;
+
+				} );
+
+				// model
+
+				var loader = new THREE.OBJLoader( manager );
+				loader.load( '20161209232449.obj', function ( object ) {
+
+					object.traverse( function ( child ) {
+
+						if ( child instanceof THREE.Mesh ) {
+
+							child.material.map = texture;
+
+						}
+
+					} );
+
+					//object.position.y = - 95;
+                    //object.position.z = 10;
+                    object.scale.set(30,30,30);
+					scene.add( object );
+
+				}, onProgress, onError );
+
+				//
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				container.appendChild( renderer.domElement );
+
+				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function onWindowResize() {
+
+				windowHalfX = window.innerWidth / 2;
+				windowHalfY = window.innerHeight / 2;
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			function onDocumentMouseMove( event ) {
+
+				mouseX = ( event.clientX - windowHalfX ) / 2;
+				mouseY = ( event.clientY - windowHalfY ) / 2;
+
+			}
+
+			//
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+				render();
+
+			}
+
+			function render() {
+
+				camera.position.x += ( mouseX - camera.position.x ) * .05;
+				camera.position.y += ( - mouseY - camera.position.y ) * .05;
+
+				camera.lookAt( scene.position );
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script><div><canvas width="1828" height="406" style="width: 1219px; height: 271px;"></canvas></div>
+
+	
+
+<div id="window-resizer-tooltip" style="display: block;"><a href="https://threejs.org/examples/webgl_loader_obj.html#" title="Edit settings"></a><span class="tooltipTitle">Window size: </span><span class="tooltipWidth" id="winWidth">1838</span> x <span class="tooltipHeight" id="winHeight">1050</span><br><span class="tooltipTitle">Viewport size: </span><span class="tooltipWidth" id="vpWidth">1219</span> x <span class="tooltipHeight" id="vpHeight">271</span></div></body></html>
