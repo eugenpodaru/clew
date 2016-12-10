@@ -9,5 +9,10 @@
         {
             return View();
         }
+
+        public ActionResult Case()
+        {
+            return View();
+        }
     }
 }

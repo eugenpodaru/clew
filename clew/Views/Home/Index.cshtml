@@ -25,7 +25,6 @@
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL PLUGINS -->
     <link href="~/assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
-    <link href="~/assets/global/plugins/jvectormap/jquery-jvectormap-2.0.3.css" rel="stylesheet" />
     <link href="~/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
     <link href="~/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS -->
@@ -250,7 +249,7 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item start active open">
-                                    <a href="index.html" class="nav-link ">
+                                    <a href="javascript:;" class="nav-link ">
                                         <i class="icon-bar-chart"></i>
                                         <span class="title">Dashboard</span>
                                         <span class="badge badge-info">15</span>
@@ -258,7 +257,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="ui_timeline.html" class="nav-link ">
+                                    <a href="javascript:;" class="nav-link ">
                                         <i class="fa fa-clock-o"></i>
                                         <span class="title">Timeline</span>
                                         <span class="badge badge-danger">10</span>
@@ -290,7 +289,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item  ">
-                                    <a href="page_general_about.html" class="nav-link ">
+                                    <a href="javascript:;" class="nav-link ">
                                         <i class="icon-info"></i>
                                         <span class="title">About</span>
                                     </a>
@@ -491,7 +490,11 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td> Accident on highway </td>
+                                            <td>
+                                                <a href="@Url.Action("Case")">
+                                                    Accident on highway
+                                                </a>
+                                            </td>
                                             <td> Utrecht </td>
                                             <td> A7 between Vinkeveen and Utrecht </td>
                                             <td> Accident involving 2 cars with no injuries </td>
@@ -499,7 +502,11 @@
                                             <td> Closed </td>
                                         </tr>
                                         <tr>
-                                            <td> Accident on highway </td>
+                                            <td>
+                                                <a href="@Url.Action("Case")">
+                                                    Accident on highway
+                                                </a>
+                                            </td>
                                             <td> Utrecht </td>
                                             <td> A7 between Vinkeveen and Utrecht </td>
                                             <td> Accident involving 2 cars with no injuries </td>
@@ -507,7 +514,11 @@
                                             <td> Closed </td>
                                         </tr>
                                         <tr>
-                                            <td> Accident on highway </td>
+                                            <td>
+                                                <a href="@Url.Action("Case")">
+                                                    Accident on highway
+                                                </a>
+                                            </td>
                                             <td> Utrecht </td>
                                             <td> A7 between Vinkeveen and Utrecht </td>
                                             <td> Accident involving 2 cars with no injuries </td>
@@ -515,7 +526,11 @@
                                             <td> Open </td>
                                         </tr>
                                         <tr>
-                                            <td> Accident on highway </td>
+                                            <td>
+                                                <a href="@Url.Action("Case")">
+                                                    Accident on highway
+                                                </a>
+                                            </td>
                                             <td> Utrecht </td>
                                             <td> A7 between Vinkeveen and Utrecht </td>
                                             <td> Accident involving one car with serios injuries </td>
@@ -523,7 +538,11 @@
                                             <td> Open </td>
                                         </tr>
                                         <tr>
-                                            <td> Accident on highway </td>
+                                            <td>
+                                                <a href="@Url.Action("Case")">
+                                                    Accident on highway
+                                                </a>
+                                            </td>
                                             <td> Utrecht </td>
                                             <td> A7 between Vinkeveen and Utrecht </td>
                                             <td> Accident involving 3 cars with no injuries </td>
@@ -531,7 +550,11 @@
                                             <td> Open </td>
                                         </tr>
                                         <tr>
-                                            <td> Accident on highway </td>
+                                            <td>
+                                                <a href="@Url.Action("Case")">
+                                                    Accident on highway
+                                                </a>
+                                            </td>
                                             <td> Utrecht </td>
                                             <td> A7 between Vinkeveen and Utrecht </td>
                                             <td> Accident involving 1 car with no injuries </td>
@@ -539,7 +562,11 @@
                                             <td> Open </td>
                                         </tr>
                                         <tr>
-                                            <td> Accident in the city </td>
+                                            <td>
+                                                <a href="@Url.Action("Case")">
+                                                    Accident in the city
+                                                </a>
+                                            </td>
                                             <td> Amsterdam </td>
                                             <td> At Pieter Calandlaan with Herengracht </td>
                                             <td> Accident involving a pedestrian and a car with minor injuries </td>
@@ -547,15 +574,23 @@
                                             <td> Open </td>
                                         </tr>
                                         <tr>
-                                            <td> Accident in the city </td>
+                                            <td>
+                                                <a href="@Url.Action("Case")">
+                                                    Accident in the city
+                                                </a>
+                                            </td>
                                             <td> Amsterdam </td>
                                             <td> Herengracht 50 </td>
-                                            <td>  </td>
+                                            <td> Accident involving a motorcycle </td>
                                             <td> Urgent </td>
                                             <td> Open </td>
                                         </tr>
                                         <tr>
-                                            <td> Accident in the city </td>
+                                            <td>
+                                                <a href="@Url.Action("Case")">
+                                                    Accident in the city
+                                                </a>
+                                            </td>
                                             <td> Rotterdam </td>
                                             <td> Stationsplein </td>
                                             <td> Accident involving 1 car in the parking lot </td>
