@@ -5,6 +5,7 @@
     var car;
     var container = document.getElementById("scene_container");
     var raycaster;
+    var selectedPoints = new Array();
 
     var camera, scene, renderer;
     var frustum = 45;
@@ -99,8 +100,23 @@
     function vecToStr(r) {
         return "(" + r.x + ", " + r.y + ", " + r.z + ")";
     }
+    function rmObj(arr,obj) {
+        var pos = arr.indexOf(obj);
+        if (pos >= 0)
+            arr.splice(pos, 1);
+    }
 
     function onMouseDown(e) {
+        if (selectedPoints.length == 2)
+        {
+            rmObj(scene.children, selectedPoints[0]);
+            rmObj(scene.children, selectedPoints[1]);
+            rmObj(scene.children, line);
+            line = undefined;
+            selectedPoints = new Array();
+            return;
+        }
+
         var mx = e.clientX - containerLeft;
         var my = e.clientY - containerTop;
         console.log(mx, my);
@@ -128,9 +144,29 @@
 
             var dotGeometry = new THREE.Geometry();
             dotGeometry.vertices.push(inter.point);
-            var dotMaterial = new THREE.PointsMaterial( { size: 100, sizeAttenuation: false } );
+            var dotMaterial = new THREE.PointsMaterial( { size: 10,
+                sizeAttenuation: false,color:0xff0000, } );
             var dot = new THREE.Points( dotGeometry, dotMaterial );
+            selectedPoints.push(dot);
             scene.add( dot );
+
+            if (selectedPoints.length == 2)
+            {
+                console.log(selectedPoints);
+                var material = new THREE.LineBasicMaterial({
+                    color: 0x0000ff,
+                    linewidth: 10,
+                });
+
+                var ln = new THREE.Geometry();
+                ln.vertices.push(
+                    selectedPoints[0].geometry.vertices[0],
+                    selectedPoints[1].geometry.vertices[0]
+                );
+                line = new THREE.Line( ln, material );
+                console.log(line);
+                scene.add(line);
+            }
         }
     }
 
