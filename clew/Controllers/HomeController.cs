@@ -102,12 +102,12 @@
 
         private string GetSpeed(string distanceString)
         {
-            double mu = 0.7;
+            double mu = 10.0;
             double g = 9.81;
             double distance;
-            var result = double.TryParse(distanceString, out distance);
+            var result = double.TryParse(distanceString, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out distance);
 
-            return result ? Math.Sqrt(2 * mu * g * distance).ToString("N2", CultureInfo.InvariantCulture) : "";
+            return result ? Math.Sqrt(2 * mu * g * distance).ToString("N0", CultureInfo.InvariantCulture) : "";
         }
     }
 }
