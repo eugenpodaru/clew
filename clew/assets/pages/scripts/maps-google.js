@@ -11,12 +11,12 @@ var MapsGoogle = function () {
     var mapMarker = function () {
         var map = new GMaps({
             div: '#gmap_marker',
-           lat: -51.38739,
-                lng: -6.187181,
+            lat: -51.38739,
+            lng: -6.187181,
         });
         map.addMarker({
-           lat: -51.38739,
-                lng: -6.187181,
+            lat: -51.38739,
+            lng: -6.187181,
             title: 'Lima',
             details: {
                 database_id: 42,
@@ -70,14 +70,20 @@ var MapsGoogle = function () {
     var mapGeolocation = function () {
 
         var map = new GMaps({
-            div: '#gmap_geo',
-            lat: -12.043333,
-            lng: -77.028333
+            div: '#location_map',
+            lat: locationLat,
+            lng: locationLong
         });
 
         GMaps.geolocate({
             success: function (position) {
                 map.setCenter(position.coords.latitude, position.coords.longitude);
+
+                map.addMarker({
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                    title: "Accident location"
+                });
             },
             error: function (error) {
                 alert('Geolocation failed: ' + error.message);
@@ -189,19 +195,19 @@ var MapsGoogle = function () {
     return {
         //main function to initiate map samples
         init: function () {
-            mapBasic();
-            mapMarker();
+            //mapBasic();
+            //mapMarker();
             mapGeolocation();
-            mapGeocoding();
-            mapPolylines();
-            mapPolygone();
-            mapRoutes();
+            //mapGeocoding();
+            //mapPolylines();
+            //mapPolygone();
+            //mapRoutes();
         }
 
     };
 
 }();
 
-jQuery(document).ready(function() {
+jQuery(document).ready(function () {
     MapsGoogle.init();
 });

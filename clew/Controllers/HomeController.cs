@@ -1,6 +1,8 @@
 ﻿namespace clew.Controllers
 {
     using azure;
+    using ExifLib;
+    using Models;
     using rdw;
     using System.Linq;
     using System.Threading.Tasks;
@@ -49,6 +51,24 @@
             var emotion = await emotionClient.GetEmotions(imagePath);
 
             return View(emotion);
+        }
+
+        public ActionResult Location()
+        {
+            var imagePath = Server.MapPath(@"~/assets/global/img/portfolio/1200x900/1 (13).jpg");
+
+            var reader = new ExifReader(imagePath);
+
+            // Extract the tag data using the ExifTags enumeration
+            double[] gpsLat, gpsLng;
+            reader.GetTagValue(ExifTags.GPSLatitude, out gpsLat);
+            reader.GetTagValue(ExifTags.GPSLongitude, out gpsLng);
+
+            return View(new Point
+            {
+                Lat = gpsLat.Last(),
+                Long = gpsLng.Last()
+            });
         }
     }
 }
