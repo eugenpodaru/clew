@@ -20,6 +20,8 @@
             // and can be any JSON-serializable class
             var dataset = client.GetResource<object>("m9d7-ebf2");
 
+            licensePlate = licensePlate.Replace("-", "").ToUpperInvariant();
+
             var query = new SoqlQuery();
             query.FullTextSearch(licensePlate);
 
