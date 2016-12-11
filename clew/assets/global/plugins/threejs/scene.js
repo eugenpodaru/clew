@@ -6,6 +6,7 @@
     var container = document.getElementById("scene_container");
     var raycaster;
     var selectedPoints = new Array();
+    var line;
 
     var camera, scene, renderer;
     var frustum = 45;
@@ -106,12 +107,17 @@
             arr.splice(pos, 1);
     }
 
+    function setDistanceText(txt) {
+        $("#distance_label").text(txt);
+    }
+
     function onMouseDown(e) {
         if (selectedPoints.length == 2)
         {
             rmObj(scene.children, selectedPoints[0]);
             rmObj(scene.children, selectedPoints[1]);
             rmObj(scene.children, line);
+            setDistanceText("");
             line = undefined;
             selectedPoints = new Array();
             return;
@@ -159,13 +165,20 @@
                 });
 
                 var ln = new THREE.Geometry();
+                var pt0 = selectedPoints[0].geometry.vertices[0];
+                var pt1 = selectedPoints[1].geometry.vertices[0];
                 ln.vertices.push(
-                    selectedPoints[0].geometry.vertices[0],
-                    selectedPoints[1].geometry.vertices[0]
+                    pt0,
+                    pt1
                 );
                 line = new THREE.Line( ln, material );
                 console.log(line);
                 scene.add(line);
+
+                var diff = new THREE.Vector3(pt1.x - pt0.x, pt1.y - pt0.y, pt1.z - pt0.z);
+                var len = diff.length();
+                setDistanceText("Distance: " + len + " m");
+                setDistance(len);
             }
         }
     }
