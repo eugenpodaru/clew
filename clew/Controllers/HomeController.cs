@@ -5,6 +5,8 @@
     using Models;
     using rdw;
     using System.Linq;
+    using System.Net;
+    using System.Runtime.Caching;
     using System.Threading.Tasks;
     using System.Web.Mvc;
 
@@ -39,6 +41,14 @@
                 .Select(p => rdwClient.GetCarData(p))
                 .ToArray();
 
+            var speed = default(object);
+            var memoryCache = MemoryCache.Default;
+            speed = memoryCache.Get(nameof(speed));
+            foreach (var car in cars)
+            {
+                car.calculated_speed = speed != null ? speed.ToString() : "-";
+            }
+
             return View(cars);
         }
 
@@ -69,6 +79,21 @@
                 Lat = gpsLat.Last(),
                 Long = gpsLng.Last()
             });
+        }
+
+        public ActionResult Weather()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Speed(int speed)
+        {
+            var memoryCache = MemoryCache.Default;
+
+            memoryCache.Add(nameof(speed), speed, new CacheItemPolicy());
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
 }

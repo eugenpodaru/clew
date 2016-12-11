@@ -49,5 +49,6 @@
         public string wam_verzekerd { get; set; }
         public string wielbasis { get; set; }
         public string zuinigheidslabel { get; set; }
+        public string calculated_speed { get; set; }
     }
 }

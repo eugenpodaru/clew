@@ -444,6 +444,62 @@ var Dashboard = function() {
                 barColor: App.getBrandColor('red')
             });
 
+            $('.easy-pie-chart .number.visibility').easyPieChart({
+                animate: 1000,
+                size: 90,
+                lineWidth: 3,
+                barColor: App.getBrandColor('red')
+            });
+
+            $('.easy-pie-chart .number.precipitations').easyPieChart({
+                animate: 1000,
+                size: 90,
+                lineWidth: 3,
+                barColor: App.getBrandColor('blue')
+            });
+
+            $('.easy-pie-chart .number.humidity').easyPieChart({
+                animate: 1000,
+                size: 90,
+                lineWidth: 3,
+                barColor: App.getBrandColor('yellow')
+            });
+
+            $('.easy-pie-chart .number.pressure').easyPieChart({
+                animate: 1000,
+                size: 90,
+                lineWidth: 3,
+                barColor: App.getBrandColor('green')
+            });
+
+            $('.easy-pie-chart .number.speed').easyPieChart({
+                animate: 1000,
+                size: 90,
+                lineWidth: 3,
+                barColor: App.getBrandColor('yellow')
+            });
+
+            $('.easy-pie-chart .number.maxtemperature').easyPieChart({
+                animate: 1000,
+                size: 90,
+                lineWidth: 3,
+                barColor: App.getBrandColor('red')
+            });
+
+            $('.easy-pie-chart .number.mintemperature').easyPieChart({
+                animate: 1000,
+                size: 90,
+                lineWidth: 3,
+                barColor: App.getBrandColor('blue')
+            });
+
+            $('.easy-pie-chart .number.soiltemperature').easyPieChart({
+                animate: 1000,
+                size: 90,
+                lineWidth: 3,
+                barColor: App.getBrandColor('blue')
+            });
+
             $('.easy-pie-chart-reload').click(function() {
                 $('.easy-pie-chart .number').each(function() {
                     var newValue = Math.floor(100 * Math.random());
