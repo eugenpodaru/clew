@@ -4,6 +4,8 @@
     using ExifLib;
     using Models;
     using rdw;
+    using System;
+    using System.Globalization;
     using System.Linq;
     using System.Net;
     using System.Runtime.Caching;
@@ -87,13 +89,25 @@
         }
 
         [HttpPost]
-        public ActionResult Speed(int speed)
+        public ActionResult SetDistance(string distance)
         {
             var memoryCache = MemoryCache.Default;
 
-            memoryCache.Add(nameof(speed), speed, new CacheItemPolicy());
+            var speed = GetSpeed(distance);
+
+            memoryCache.Set(nameof(speed), speed, new CacheItemPolicy());
 
             return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+        private string GetSpeed(string distanceString)
+        {
+            double mu = 0.7;
+            double g = 9.81;
+            double distance;
+            var result = double.TryParse(distanceString, out distance);
+
+            return result ? Math.Sqrt(2 * mu * g * distance).ToString("N2", CultureInfo.InvariantCulture) : "";
         }
     }
 }
