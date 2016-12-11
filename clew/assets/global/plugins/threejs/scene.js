@@ -4,22 +4,27 @@
     var radius = 10;
     var car;
     var container = document.getElementById("scene_container");
+    var raycaster;
 
     var camera, scene, renderer;
+    var frustum = 45;
 
     var mouseX = 0, mouseY = 0;
 
+    var containerTop = container.getBoundingClientRect().top;
+    var containerLeft = container.getBoundingClientRect().left;
     var containerWidth = container.clientWidth;
     var containerHeight = container.clientHeight;
 
-    console.log(containerWidth, containerHeight);
+    console.log(containerTop, containerLeft, containerWidth, containerHeight);
 
     init();
     animate();
 
     function init() {
 
-        camera = new THREE.PerspectiveCamera(45, containerWidth / containerHeight, 1, 2000);
+        raycaster = new THREE.Raycaster();
+        camera = new THREE.PerspectiveCamera(frustum, containerWidth / containerHeight, 1, 2000);
 
         // scene
 
@@ -96,30 +101,36 @@
     }
 
     function onMouseDown(e) {
-        var vectorMouse = new THREE.Vector3( //vector from camera to mouse
-            -(containerWidth/2-e.clientX)*2/containerWidth,
-            (containerHeight/2-e.clientY)*2/containerHeight,
-            -1/Math.tan(22.5*Math.PI/180)); //22.5 is half of camera frustum angle 45 degree
-        vectorMouse.applyQuaternion(camera.quaternion);
-        vectorMouse.normalize();
-        console.log("Mouse: " + vecToStr(vectorMouse));
-
-        var vectorObject = new THREE.Vector3(); //vector from camera to object
-        console.log("car: " + vecToStr(car.position));
-        vectorObject.set(car.position.x - camera.position.x,
-                        car.position.y - camera.position.y,
-                        car.position.z - camera.position.z);
-        vectorObject.normalize();
-        console.log("vectorObject: " + vecToStr(vectorObject));
-        var a = vectorMouse.angleTo(vectorObject);
-        var angle = vectorMouse.angleTo(vectorObject)*180/Math.PI;
-        if (angle < 1) {
-            //mouse's position is near object's position
-            console.log("found");
+        var mx = e.clientX - containerLeft;
+        var my = e.clientY - containerTop;
+        console.log(mx, my);
+        if (mx < 0 || my < 0 || mx > containerWidth || my > containerHeight)
+        {
+            console.log("Out");
+            return;
+        }
+        var mouse2D = new THREE.Vector2(
+                2*mx/containerWidth - 1,
+                -2*my/containerHeight + 1);
+        raycaster.setFromCamera(mouse2D, camera);
+        var intersects = raycaster.intersectObjects(scene.children, true);
+        if (intersects.length == 0)
+        {
+            console.log("not found");
         }
         else
         {
-            console.log("not found: " + angle);
+            var inter = intersects[0];
+            var i;
+            for (i = 1; i < intersects.length; i++)
+                if (intersects[i].distance < inter)
+                    inter = intersects[i];
+
+            var dotGeometry = new THREE.Geometry();
+            dotGeometry.vertices.push(inter.point);
+            var dotMaterial = new THREE.PointsMaterial( { size: 100, sizeAttenuation: false } );
+            var dot = new THREE.Points( dotGeometry, dotMaterial );
+            scene.add( dot );
         }
     }
 
